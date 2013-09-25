@@ -1,12 +1,12 @@
-Image conversions
+#Image conversions
 convert -resize 65% 1.jpg 2.jpg 3.jpg output.pdf
 convert file.jpg file.gif
 convert -rotate 90 file.jpg file_new.jpg
 
-File conversions
+#File conversions
 dos2unix win.txt linux.txt	#from Windows to Linux
 iconv --from-code=UTF-8 --to-code=ISO-8859-1 text_in_utf-8.txt > text_in_iso-8859-1.txt		#Different encodings
 
 
-
-
+#PDF resize
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile=reduced.pdf input.pdf
