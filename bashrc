@@ -110,8 +110,10 @@ CODE="/home/florin/Work/Code"
 ORGANIZER="/home/florin/Diverse/Organizer"
 AGENDA="/home/florin/Diverse/Organizer/Agenda"
 PACKAGES="/home/florin/Work/Packets"
+PHONE="+41791542245"
+JPHONE="+41798774104"
 
-export BACKUP DOCU IMAGES WORK PACKAGES ORGANIZER AGENDA
+export BACKUP DOCU IMAGES WORK PACKAGES ORGANIZER AGENDA PHONE
 
 
 # enable programmable completion features (you don't need to enable
