@@ -10,3 +10,6 @@ iconv --from-code=UTF-8 --to-code=ISO-8859-1 text_in_utf-8.txt > text_in_iso-885
 
 #PDF resize
 gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile=reduced.pdf input.pdf
+
+# the 10 processes using the most ram 
+ps -A --sort -rss -o comm,pmem | head -n 11
