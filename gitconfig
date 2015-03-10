@@ -1,0 +1,28 @@
+[user]
+	name = Florin Micu
+	email = florin.micu@qnective.com
+[color]
+	ui = true
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	wdiff = diff
+	wdiff = diff
+	last = log -1 HEAD
+	crucible = "!f() { local b=\"${USER}-$(git rev-parse --abbrev-ref HEAD | tr ' ' '_')\"; git push reviews \"HEAD:$b\" && echo \"Pushed to reviews/$b\"; }; f"
+	fcrucible = "!f() { local b=\"${USER}-$(git rev-parse --abbrev-ref HEAD | tr ' ' '_')\"; git push -f reviews \"HEAD:$b\" && echo \"Pushed to reviews/$b\"; }; f"
+	clog  = log -n 20  --pretty=tformat:'%C(yellow)%h%Creset %ai %C(green)%an%Creset %C(bold cyan)->%Creset%C(bold blue)%d%Creset %s'
+	dlog = log -n 20  --pretty=tformat:'%C(yellow)%h%Creset %ai %C(green)%an%Creset %C(bold cyan)->%Creset%C(bold blue)%d%Creset %s' --graph
+	ln = log -n
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	log-me = !UN=$(git config user.name)&& git log --author="\"$UN\"" --pretty=format:'%h %cd %s' --date=short
+[core]
+	editor = nano
+	pager = cat
+[giggle]
+	main-window-maximized = true
+	main-window-geometry = 700x550+609+298
+	history-view-vpane-position = 481
+	main-window-view = HistoryView

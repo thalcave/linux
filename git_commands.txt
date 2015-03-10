@@ -1,0 +1,62 @@
+-----------------------------------------------------------
+Commits
+
+# squash commits:
+* git rebase -i HEAD~3
+
+#  find all commits where commit message contains given word
+* git log --grep=INA-1160
+
+# search the commit contents
+* git log -Sword
+
+
+# pushing to remote:
+* git push remote_server INA-1368:florin
+
+
+-----------------------------------------------------------
+Branches
+
+# sort local branches after commit date
+git for-each-ref --sort=-committerdate refs/heads
+git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)'
+
+# see remote branches:
+* git ls-remote --heads gitolite@git.repo.com:florin
+
+# fetch remote branch
+git fetch origin INA-896:INA-896
+git fetch janick ina-2727:janick_ina-2727
+
+# set up to track local branch 
+git branch --set-upstream mihai/qnmaster
+
+# show tracked branches
+git branch -vv
+
+
+#fetch from origin and rebase local work on it
+git pull --rebase
+
+
+-------------------------------------------------
+Misc
+
+# revert chunks from file
+git checkout -p /path/to/file
+
+# revert chunks from a file in the last commit
+git co reset --soft HEAD^
+git reset HEAD /path/to/file
+git checkout -p /path/to/file
+
+# create a patch:
+git format-patch feature/qtalk  --stdout > /tmp/patch.txt
+git diff > mypatch.patch
+
+# apply a patch
+git apply --stat fix_empty_poster.patch
+
+
+
