@@ -13,3 +13,10 @@ gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -d
 
 # the 10 processes using the most ram 
 ps -A --sort -rss -o comm,pmem | head -n 11
+
+
+# show 2 files side-by-side
+pr -m -t -w 256 test_report1.txt test_report2.txt
+
+# see all threads:
+ps -eLf
