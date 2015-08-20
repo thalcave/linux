@@ -10,12 +10,17 @@ Commits
 # search the commit contents
 * git log -Sword
 
+# search for deleted line containing 'string'
+* git log -S string /path/to/file
 
 # pushing to remote:
 * git push remote_server INA-1368:florin
 
 # add file to last commit
-git commit --amend -C HEAD
+* git commit --amend -C HEAD
+
+# modify last commit's message
+* git commit --amend
 
 -----------------------------------------------------------
 Branches
@@ -62,3 +67,5 @@ git apply --stat fix_empty_poster.patch
 
 
 
+# search all git repositories from a dir
+find . -name .git -type d -prune
