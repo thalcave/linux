@@ -1,0 +1,7 @@
+SELECT sOrgId,bSuspended,COUNT(bSuspended) from EndUser WHERE eUserType = 0 AND sOrgId <> '' GROUP BY sOrgId,bSuspended;
+
+
+
+SELECT Organization.sId, EndUser.bSuspended, COUNT(EndUser.bSuspended) FROM Organization
+          LEFT JOIN EndUser ON Organization.sId = EndUser.sOrgId
+          GROUP BY Organization.sId, EndUser.bSuspended;

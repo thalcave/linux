@@ -1,0 +1,60 @@
+# match string at the beginning of the line
+grep "^GNU" file
+
+# match every line ending with GNU
+grep "GNU$" file
+
+# match any character
+grep -E "Saved . billable events"
+
+# match one or more occurence
+grep -E "Saved .+ billable events"
+
+
+Bracket
+
+# find the lines that contain "too" or "two"
+grep "t[wo]o" GPL-3
+
+# match anything except the characters within a bracket by beginning the list of characters within the brackets with a "^" character.
+grep "[^c]ode" GPL-3
+# will not match the pattern "code", it will match "Mode"
+
+# find every line that begins with a capital letter
+grep "^[A-Z]" GPL-3
+
+
+Repeat Pattern Zero or More Times
+#  "*", which means "repeat the previous character or expression zero or more times".
+# find each line that contained an opening and closing parenthesis, with only letters and single spaces in between, we could use the following expression:
+grep "([A-Za-z ]*)" GPL-3
+
+
+# To match a character zero or one times, you can use the "?" character. This makes character or character set that came before optional, in essence.
+# The following matches "copyright" and "right" by putting "copy" in an optional group:
+grep -E "(copy)?right" GPL-3
+
+# The following expression matches the string "free" plus one or more characters that are not whitespace:
+grep -E "free[^[:space:]]+" GPL-3
+
+
+Specifying Match Repetition
+If we need to specify the number of times that a match is repeated, we can use the brace characters ("{" and "}").
+
+# if we want to find all of the lines that contain triple-vowels, we can use the following expression:
+grep -E "[AEIOUaeiou]{3}" GPL-3
+
+#  match any words that have between 16 and 20 characters
+grep -E "[[:alpha:]]{16,20}" GPL-3
+
+
+
+
+       ?      The preceding item is optional and matched at most once.
+       *      The preceding item will be matched zero or more times.
+       +      The preceding item will be matched one or more times.
+       {n}    The preceding item is matched exactly n times.
+       {n,}   The preceding item is matched n or more times.
+       {,m}   The preceding item is matched at most m times.  This is a GNU extension.
+       {n,m}  The preceding item is matched at least n times, but not more than m times.
+
