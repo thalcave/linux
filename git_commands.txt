@@ -42,10 +42,12 @@ git branch --set-upstream mihai/qnmaster
 # show tracked branches
 git branch -vv
 
-
 #fetch from origin and rebase local work on it
 git pull --rebase
 
+# setting local branch to match exactly the remote one
+git fetch origin
+git reset --hard origin/master
 
 -------------------------------------------------
 Misc

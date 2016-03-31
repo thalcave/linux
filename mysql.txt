@@ -5,3 +5,51 @@ SELECT sOrgId,bSuspended,COUNT(bSuspended) from EndUser WHERE eUserType = 0 AND 
 SELECT Organization.sId, EndUser.bSuspended, COUNT(EndUser.bSuspended) FROM Organization
           LEFT JOIN EndUser ON Organization.sId = EndUser.sOrgId
           GROUP BY Organization.sId, EndUser.bSuspended;
+
+
+SELECT a.topic_id, a.max_index, MAX(c.message_index), MIN(c.message_index) FROM topic AS a
+LEFT JOIN topic_message AS c
+     ON a.topic_id = c.topic_id
+WHERE a.topic_id IN
+      (SELECT topic.topic_id FROM topic where `QtalkNG`.`topic`.`topic_name` regexp 'topic')
+GROUP BY a.topic_id; 
+
+SELECT topic.topic_id, topic.max_index, MIN(topic_message.message_index), MAX(topic_message.message_index), COUNT(topic_message.topic_id)
+FROM topic
+LEFT JOIN topic_message
+     ON topic.topic_id = topic_message.topic_id
+WHERE topic.topic_id IN
+      (SELECT topic.topic_id FROM topic where `QtalkNG`.`topic`.`topic_name` regexp 'topic')
+GROUP BY topic.topic_id;
+
+
+
+-------------------------------
+GROUP BY - specifies that rows from the intermediate result set are to be divided in a number of groups, 
+returning one single row for each such group
+
+GROUP BY 'species' - yields one group for each species
+     whereas 
+GROUP BY 'species', 'birth' - yields a group for each combination of values in 'species' and 'birth' - most probably not at all what is intended.
+
+
+
+Joins
+
+Inner join: intersection of 2 tables
+- selects from *both* tables the topics which have messages
+          SELECT * FROM topic INNER JOIN topic_message ON topic.topic_id = topic_message.topic_id;
+- selects from 'topic' table only the topics which have messages
+          SELECT topic.* FROM topic INNER JOIN topic_message ON topic.topic_id = topic_message.topic_id;
+      
+Left outer join: all the rows of the left collection, and where present, the rows of the right collection
+- rows from the left collection are not left out
+// count messages for each topic
+         SELECT topic.topic_name, COUNT(topic_message.topic_id) FROM topic
+                LEFT JOIN topic_message ON topic.topic_id = topic_message.topic_id
+         GROUP BY topic.topic_id, topic_message.topic_id;
+
+
+Outer join: inverse of the Inner join
+- retuns those records not in T1 and T2
+
