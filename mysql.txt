@@ -49,7 +49,23 @@ Left outer join: all the rows of the left collection, and where present, the row
                 LEFT JOIN topic_message ON topic.topic_id = topic_message.topic_id
          GROUP BY topic.topic_id, topic_message.topic_id;
 
+// select conversations without participants
+        SELECT hex(conversation.conversation_id) FROM conversation 
+                LEFT JOIN participant ON conversation.conversation_id = participant.conversation_id 
+        WHERE participant.conversation_id IS NULL;
+
+
+// select from Participants and order from Conversation
+        SELECT hex(participant.conversation_id), participant.end_user FROM participant 
+                LEFT JOIN conversation ON participant.conversation_id  = conversation.conversation_id 
+                WHERE participant.end_user like '%+417991834903%' AND participant.is_deleted = 0 
+                ORDER BY created_at;
 
 Outer join: inverse of the Inner join
 - retuns those records not in T1 and T2
 
+
+
+--------------------------
+MySQL client:
+\# - enable autocompletion

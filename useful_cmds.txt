@@ -23,3 +23,6 @@ pr -m -t -w 256 test_report1.txt test_report2.txt
 
 # see all threads:
 ps -eLf
+
+# disable energy saving
+xset -dpms s off

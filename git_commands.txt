@@ -56,7 +56,7 @@ Misc
 git checkout -p /path/to/file
 
 # revert chunks from a file in the last commit
-git co reset --soft HEAD^
+git reset --soft HEAD^
 git reset HEAD /path/to/file
 git checkout -p /path/to/file
 
