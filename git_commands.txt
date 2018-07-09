@@ -13,6 +13,9 @@ Commits
 # search for deleted line containing 'string'
 * git log -S string /path/to/file
 
+# search for a string
+git log -p | grep STRING
+
 # pushing to remote:
 * git push remote_server INA-1368:florin
 
@@ -21,6 +24,13 @@ Commits
 
 # modify last commit's message
 * git commit --amend
+
+# change a commit (not the last one):
+* git rebase --interactive 'bbc643cd^'
+* select "edit"
+* do the changes
+* git commit --all --amend --no-edit
+* git rebase --continue
 
 -----------------------------------------------------------
 Branches
@@ -49,6 +59,10 @@ git pull --rebase
 git fetch origin
 git reset --hard origin/master
 
+
+# transplant a branch based on one branch to another, to pretend that you forked the branch from the latter branch
+git rebase --onto <correct_branch> <wrong_branch> ALPS-3850_snmp_trap_when_user_is_blocked
+
 -------------------------------------------------
 Misc
 
@@ -71,3 +85,6 @@ git apply --stat fix_empty_poster.patch
 
 # search all git repositories from a dir
 find . -name .git -type d -prune
+
+# see if a branch contains a commit
+git branch --commit SHA

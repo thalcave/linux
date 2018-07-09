@@ -1,0 +1,8 @@
+M-x delete-trailing-whitespace
+
+M-x mode-name
+
+C-x C-u: to uppercase
+C-x C-l: to lowercase
+
+

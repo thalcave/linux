@@ -65,7 +65,40 @@ Outer join: inverse of the Inner join
 - retuns those records not in T1 and T2
 
 
+Rules:
+* filter data in the where clause of the SQL.
+adding condition in Where clause, makes the code more clearer. 
+    When you add them to the AND clause, it gives a feeling that JOIN is based on the combination of two fields.
+    Adding condition to Where clause, might help the optimizer to filter out the records even before joining, in case of large tables
+
 
 --------------------------
 MySQL client:
 \# - enable autocompletion
+
+
+
+-------------------------------------
+Efficient deletion
+
+DELETE topic_message.* FROM topic_message 
+INNER JOIN topic ON 
+    (topic_message.topic_id = topic.topic_id) 
+WHERE `topic`.`topic_name` = 'stage:keys&test.user.-1414636811#2&3';
+
+inefficient one:
+DELETE FROM topic_message WHERE topic_id IN (
+    SELECT topic_id FROM topic WHERE topic.topic_name = 'stage:keys&test.user.-1414636811#2&3'
+);
+
+
+
+
+--------------------------------
+		 SELECT conversation_id, BIT_AND(end_user IN (users)) AS hasOnlyInternalParticipants
+		 FROM participant
+		 GROUP BY cid
+		 HAVING hasOnlyInternalParticipants
+		 ORDER BY cid ;
+
+
