@@ -82,9 +82,12 @@ git diff > mypatch.patch
 git apply --stat fix_empty_poster.patch
 
 
-
 # search all git repositories from a dir
 find . -name .git -type d -prune
 
 # see if a branch contains a commit
 git branch --commit SHA
+
+# Undo git reset
+git reset 'HEAD@{1}'
+
