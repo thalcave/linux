@@ -63,6 +63,13 @@ git reset --hard origin/master
 # transplant a branch based on one branch to another, to pretend that you forked the branch from the latter branch
 git rebase --onto <correct_branch> <wrong_branch> ALPS-3850_snmp_trap_when_user_is_blocked
 
+# fetch remote branch and track it
+git checkout --track origin/branch
+
+# rebase on branch with conflicts (instead of cherry-pick):
+git rebase --i HEAD~2
+change the sha of the commit with the new one
+
 -------------------------------------------------
 Misc
 
